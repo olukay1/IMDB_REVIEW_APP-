@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run glance-it.py
+web: streamlit run --server.port $PORT glance-it.py
