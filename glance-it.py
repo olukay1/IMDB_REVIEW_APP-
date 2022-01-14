@@ -3,8 +3,8 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import seaborn as sns
-import nltk
-nltk.download('stopwords')
+#import nltk
+#nltk.download('stopwords')
 from wordcloud import WordCloud, STOPWORDS
 from bs4 import BeautifulSoup as bs
 import requests
