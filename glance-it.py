@@ -39,9 +39,9 @@ row1_spacer1, row1_1, row1_spacer2 = st.columns((.1,7.3,.1))
 with row1_1:
 
     st.write("""**Hello!** Welcome to **_Glance-it_!**. This app scrapes few  reviews of your favorite movie from imdb 
-                (but do not store the data) and gives you nice graphs. The app lets you know (base on users review) if you
+                (but do not store the data) and convert it to a nice graphs. The app lets you know (base on users review) if you
                 if a movie worth your time and money. Also, the app shows how many users find the movie **_Ineteresting_**, **_Cool_**, 
-                **_Not Cool_** or **_Boring_**.   """)
+                **_Not Cool_** or **_Boring_**. Why don't you dig in and see for yourself. Have fun!  """)
     st.markdown("**PS:** the reviews are based on individual's view about the movie and their opinions may not be final ")
     st.write("___")
 
@@ -195,6 +195,7 @@ add_selectbox = st.sidebar.selectbox(
 )
 
 if add_selectbox == "Recommendation":
+    st.sidebar.write("""Recommendation shows you what viewers think about the movie. Viewers rate it from INTERESTING to BORING. """)
     st.write("**_Recommendation base on review_**")
         ## BAR CHART for Recommendation
     labels = main_df['Recommendation'].unique()
@@ -217,6 +218,7 @@ if add_selectbox == "Recommendation":
     st.write("___")
 
 if add_selectbox == "Ratings":
+    st.sidebar.write("""This is a rating distribution showing the percentage of viewers who rated the movie (this is limited to the data collected). """)
     st.write("**_Rating Distribution_**")
     labels = main_df['Ratings'].unique()
 
@@ -241,6 +243,7 @@ if add_selectbox == "Ratings":
     st.pyplot(fig1)
 
 if add_selectbox == "Wordcloud":
+    st.sidebar.write("""Wordcloud gives you an idea of the frequently mentioned word or phrase pertaining to the movie. """)
     st.write("**_Frequent words mentioned in review title_**")
     text = main_df['Title'].values
 
@@ -259,6 +262,7 @@ if add_selectbox == "Wordcloud":
 
 
 if add_selectbox == "Table":
+    st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
     df = main_df.head(10)
     st.write("**Top ten reviews**")
     st.dataframe(df)
