@@ -263,7 +263,7 @@ if add_selectbox == "Wordcloud":
 
 if add_selectbox == "Table":
     st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
-    num_val =st.slider('Number top reviews to see', 0, 10)
+    num_val =st.sidebar.slider('Number top reviews to see', 0, 10)
     df = main_df.head(num_val)
     st.write("**Top**"+ str(num_val) + "**reviews**")
     st.dataframe(df)
