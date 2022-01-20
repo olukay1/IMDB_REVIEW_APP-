@@ -269,10 +269,10 @@ if add_selectbox == "Table":
       ('Top', 'Last'))
 
     if top_last == 'Top':
-      df = main_df.head(num_val)
+      df = main_df.head(num_val).index +1
       
     if top_last == 'Last':
-      df = main_df.tail(num_val)
+      df = main_df.tail(num_val).index +1
     
     st.dataframe(df)
 
