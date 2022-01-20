@@ -263,7 +263,7 @@ if add_selectbox == "Wordcloud":
 
 if add_selectbox == "Table":
     st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
-    num_val =st.sidebar.slider('Number top reviews to see', min=0, max=10, value=5)
+    num_val =st.sidebar.slider('Number top reviews to see', 0, 10, 5)
     top_last = st.radio(
       "Top reviews or last reviews",
       ('Top', 'Last'))
