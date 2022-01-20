@@ -38,10 +38,10 @@ row1_spacer1, row1_1, row1_spacer2 = st.columns((.1,7.3,.1))
 
 with row1_1:
 
-    st.write("""**Hello! Welcome to Glance-it!** This app scrapes a few reviews of your favorite movies from IMDb
+    st.write("""**Hello! Welcome to Glance-it!** This app scrapes a few reviews of your favorite movies from IMDb
               (but does not store the data) and converts it to easy to view graphs. The app lets you know (based on other user's reviews)
-              if a movie is worth your time and money. Also, the app shows the percentage of users that find the movie either 
-              **interesting**, **cool**, **not cool** or **boring**. Why don't you dig in and see for yourself? Have fun!  """)
+              if a movie is worth your time and money. Also, the app shows the percentage of users that find the movie either 
+              **interesting**, **cool**, **not cool** or **boring**. Why don't you dig in and see for yourself? Have fun!  """)
     st.markdown("**PS:** the reviews are based on individual's view about the movie and their opinions may not be final ")
     st.write("___")
 
@@ -50,7 +50,7 @@ row2_spacer1, row2_1, row2_spacer2 = st.columns((3,7.3,3))
 
 with row2_1:
     search_header = st.subheader("Search movie title")
-    title = st.text_input(search_header, value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
+    title = st.text_input("Enter movie title", value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
 
 
 
@@ -194,6 +194,15 @@ add_selectbox = st.sidebar.selectbox(
     ("Recommendation", "Ratings", "Wordcloud","Table")
 )
 
+#Progress bar
+my_bar = st.progress(0)
+
+for percent_complete in range(1,100,5):
+     sleep(0.1)
+     my_bar.progress(percent_complete + 1)
+my_bar.empty()
+
+#Show bar chart of movie recommendation
 if add_selectbox == "Recommendation":
     st.sidebar.write("""Recommendation shows you what viewers think about the movie. Viewers rate it from INTERESTING to BORING. """)
     st.write("**_Recommendation base on review_**")
@@ -204,19 +213,27 @@ if add_selectbox == "Recommendation":
     fig, ax = plt.subplots(figsize=(10,4)) 
     wedges = ax.bar(x=main_df['Recommendation'].unique(), height=main_df["Recommendation"].value_counts(), width=0.8, color= colors)
 
-        #ax.legend(wedges, labels,
-            # title="Recommendation",
-            # loc="center left",
-                #bbox_to_anchor=(1, 0, 1, 1.5))
-
-        #plt.ylim(10, 120,20)
-        #plt.xlabel("Recommendations")    plt.ylabel("Count")
-        #plt.title("Recommendation base on review")
-        #plt.xticks(rotation=45)
     plt.show()
     st.pyplot(fig)
     st.write("___")
 
+#Show Movie average rating card
+st.subheader("**_Average Movie Rating_**")
+fig3, ax3 = plt.subplots(figsize=(8,2))
+wedges = ax3.text(0.6, 0.7, str(main_df.Ratings.astype(int).mean().round(2)) + "/10", size=50, rotation=360,
+         ha="center", va="center",
+         bbox=dict(boxstyle="round",
+                   ec=(.5, 0.5, 0.5),
+                   fc=(.2, 0.8, 0.8),
+                   )
+         )
+
+plt.axis('off')
+plt.show()
+st.pyplot(fig3)
+st.write("___")
+
+#Show pie chart of ratings
 if add_selectbox == "Ratings":
     st.sidebar.write("""This is a rating distribution showing the percentage of viewers who rated the movie (this is limited to the data collected). """)
     st.write("**_Rating Distribution_**")
@@ -242,6 +259,7 @@ if add_selectbox == "Ratings":
     plt.show()
     st.pyplot(fig1)
 
+#Show Wordcloud of popular words or phrase mentioned in review title
 if add_selectbox == "Wordcloud":
     st.sidebar.write("""Wordcloud gives you an idea of the frequently mentioned word or phrase pertaining to the movie. """)
     st.write("**_Frequent words mentioned in review title_**")
@@ -260,20 +278,19 @@ if add_selectbox == "Wordcloud":
     #plt.title('Popular words in Title')
     st.pyplot(fig2)
 
-
+#Show Table of Top or Last review
 if add_selectbox == "Table":
     st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
-    num_val =st.sidebar.slider('Number top reviews to see', 0, 10, 5)
+    num_val =st.sidebar.slider('Number of reviews to see', 0, 10, 5)
     top_last = st.radio(
       "Top reviews or last reviews",
       ('Top', 'Last'))
 
     if top_last == 'Top':
-      df = main_df.head(num_val).index +1
+      df = main_df.head(num_val)
       
     if top_last == 'Last':
-      df = main_df.tail(num_val).index +1
+      df = main_df.tail(num_val)
     
     st.dataframe(df)
-
 
