@@ -218,7 +218,7 @@ if add_selectbox == "Recommendation":
     st.write("___")
 
 #Show Movie average rating card
-st.subheader("**_Average Movie Rating_**")
+st.write("**_Average Movie Rating_**")
 fig3, ax3 = plt.subplots(figsize=(8,2))
 wedges = ax3.text(0.6, 0.7, str(main_df.Ratings.astype(int).mean().round(2)) + "/10", size=50, rotation=360,
          ha="center", va="center",
