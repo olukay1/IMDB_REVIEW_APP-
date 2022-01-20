@@ -217,21 +217,21 @@ if add_selectbox == "Recommendation":
     st.pyplot(fig)
     st.write("___")
 
-#Show Movie average rating card
-st.write("**_Average Movie Rating_**")
-fig3, ax3 = plt.subplots(figsize=(8,2))
-wedges = ax3.text(0.6, 0.7, str(main_df.Ratings.astype(int).mean().round(2)) + "/10", size=50, rotation=360,
-         ha="center", va="center",
-         bbox=dict(boxstyle="round",
-                   ec=(.5, 0.5, 0.5),
-                   fc=(.2, 0.8, 0.8),
-                   )
-         )
+    #Show Movie average rating card
+    st.write("**_Average Movie Rating_**")
+    fig3, ax3 = plt.subplots(figsize=(8,2))
+    wedges = ax3.text(0.6, 0.7, str(main_df.Ratings.astype(int).mean().round(2)) + "/10", size=50, rotation=360,
+             ha="center", va="center",
+            bbox=dict(boxstyle="round",
+                       ec=(.5, 0.5, 0.5),
+                      fc=(.2, 0.8, 0.8),
+                       )
+             )
 
-plt.axis('off')
-plt.show()
-st.pyplot(fig3)
-st.write("___")
+    plt.axis('off')
+    plt.show()
+    st.pyplot(fig3)
+    st.write("___")
 
 #Show pie chart of ratings
 if add_selectbox == "Ratings":
@@ -281,10 +281,12 @@ if add_selectbox == "Wordcloud":
 #Show Table of Top or Last review
 if add_selectbox == "Table":
     st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
-    num_val =st.sidebar.slider('Number of reviews to see', 0, 10, 5)
     top_last = st.radio(
-      "Top reviews or last reviews",
-      ('Top', 'Last'))
+     "Top reviews or last reviews",
+     ('Top', 'Last'))
+    
+    num_val =st.sidebar.slider('Number of reviews to see', 0, 10, 5)
+   
 
     if top_last == 'Top':
       df = main_df.head(num_val)
