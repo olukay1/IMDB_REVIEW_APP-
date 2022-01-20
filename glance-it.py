@@ -49,8 +49,8 @@ with row1_1:
 row2_spacer1, row2_1, row2_spacer2 = st.columns((3,7.3,3))
 
 with row2_1:
-    
-    title = st.text_input("**Search movie title**", value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
+    search_header = st.subheader("Search movie title")
+    title = st.text_input(search_header, value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
 
 
 
