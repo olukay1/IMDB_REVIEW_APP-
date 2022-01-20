@@ -41,7 +41,7 @@ with row1_1:
     st.write("""**Hello! Welcome to Glance-it!** This app scrapes a few reviews of your favorite movies from IMDb
               (but does not store the data) and converts it to easy to view graphs. The app lets you know (based on other user's reviews)
               if a movie is worth your time and money. Also, the app shows the percentage of users that find the movie either 
-              **interesting**, **cool**, **not cool** or **boring**. Why don't you dig in and see for yourself?! Have fun!  """)
+              **interesting**, **cool**, **not cool** or **boring**. Why don't you dig in and see for yourself? Have fun!  """)
     st.markdown("**PS:** the reviews are based on individual's view about the movie and their opinions may not be final ")
     st.write("___")
 
@@ -50,7 +50,7 @@ row2_spacer1, row2_1, row2_spacer2 = st.columns((3,7.3,3))
 
 with row2_1:
     
-    title = st.text_input("Search movie title", value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
+    title = st.text_input("###Search movie title", value= "red sparrow",max_chars=30, help="Clear the default title...Enter movie title and press ENTER")
 
 
 
@@ -263,8 +263,9 @@ if add_selectbox == "Wordcloud":
 
 if add_selectbox == "Table":
     st.sidebar.write("""Table gives you the first ten reviews made by viewers """)
-    df = main_df.head(10)
-    st.write("**Top ten reviews**")
+    num_val =st.slider('Number top reviews to see', 0, 10)
+    df = main_df.head(num_val)
+    st.write("**Top**" +**num_val** "**reviews**")
     st.dataframe(df)
 
 
