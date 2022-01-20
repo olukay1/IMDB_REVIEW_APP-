@@ -38,10 +38,10 @@ row1_spacer1, row1_1, row1_spacer2 = st.columns((.1,7.3,.1))
 
 with row1_1:
 
-    st.write("""**Hello!** Welcome to **_Glance-it_!**. This app scrapes few  reviews of your favorite movie from imdb 
-                (but do not store the data) and convert it to a nice graphs. The app lets you know (base on users review) if you
-                if a movie worth your time and money. Also, the app shows how many users find the movie **_Ineteresting_**, **_Cool_**, 
-                **_Not Cool_** or **_Boring_**. Why don't you dig in and see for yourself. Have fun!  """)
+    st.write("""**Hello! Welcome to Glance-it!** This app scrapes a few reviews of your favorite movies from IMDb
+              (but does not store the data) and converts it to easy to view graphs. The app lets you know (based on other user's reviews)
+              if a movie is worth your time and money. Also, the app shows the percentage of users that find the movie either 
+              **interesting**, **cool**, **not cool** or **boring**. Why don't you dig in and see for yourself?! Have fun!  """)
     st.markdown("**PS:** the reviews are based on individual's view about the movie and their opinions may not be final ")
     st.write("___")
 
