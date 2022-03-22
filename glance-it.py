@@ -11,7 +11,7 @@ import requests
 from streamlit_lottie import st_lottie
 import re
 from time import sleep
-import plotly.express as px
+#import plotly.express as px
 #******************************************************************************************************************
                                             #STREAMLIT SECTION
 #********************************************************************************************************************
@@ -35,8 +35,7 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-
-lottie_chart = load_lottieurl('https://assets3.lottiefiles.com/packages/lf20_kzbhn4td.json')
+lottie_chart = load_lottieurl('https://assets9.lottiefiles.com/packages/lf20_i2eyukor.json')
 st_lottie(lottie_chart, speed=1, height=100, key="initial")
 
 #Title column alignment manipulation
