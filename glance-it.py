@@ -16,7 +16,7 @@ from time import sleep
                                             #STREAMLIT SECTION
 #********************************************************************************************************************
 #Streamlit page settings
-st.set_page_config(page_title="At-glance", page_icon=":eyeglasses:", layout="wide")
+st.set_page_config(page_title="At-glance", page_icon=":eyeglasses:", initial_sidebar_state='expanded')
 
 # ---- HIDE STREAMLIT STYLE ----
 hide_st_style = """
