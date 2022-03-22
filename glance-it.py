@@ -11,10 +11,23 @@ import requests
 from streamlit_lottie import st_lottie
 import re
 from time import sleep
-
+import plotly.express as px
 #******************************************************************************************************************
                                             #STREAMLIT SECTION
 #********************************************************************************************************************
+#Streamlit page settings
+st.set_page_config(page_title="At-glance", page_icon=":eyeglasses:", layout="wide")
+
+# ---- HIDE STREAMLIT STYLE ----
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 # Import logo animation from lotties
 def load_lottieurl(url: str):
     r = requests.get(url)
